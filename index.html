@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nossa Aldeia — Psicoterapia em rede</title>
+<title>Roda de Conversas para Mães · Nossa Aldeia</title>
 
 <link rel="icon" type="image/png" href="https://i.ibb.co/yFnvC8ch/logo-2.png" />
 
@@ -171,6 +171,7 @@ h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--musgo-deep);text-wrap:b
   font-family:'Cormorant Garamond',serif;font-style:italic;
   font-size:26px;color:var(--musgo);margin-top:36px;
 }
+.value__quote em{color:var(--terracota);font-weight:500}
 .value__beats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px 0 8px;text-align:left}
 .value-beat{
   background:var(--white);border:1px solid var(--rule);border-radius:14px;
@@ -725,8 +726,8 @@ h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--musgo-deep);text-wrap:b
 .final h2 .em{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;color:var(--dourado-light)}
 .final__sub{font-size:19px;color:rgba(251,249,244,.8);max-width:560px;line-height:1.65}
 .final .btn{padding:18px 36px;font-size:16px}
-.final__btn{background:var(--dourado);color:var(--musgo-deep);font-weight:600}
-.final__btn:hover{background:#BDA587;transform:translateY(-2px) scale(1.02)}
+.final__btn { background: #FFFFFF !important; color: var(--musgo-deep) !important; font-weight: 600; }
+.final__btn:hover { background: #F5F2ED !important; transform: translateY(-2px) scale(1.02); }
 .final__micro{font-size:14px;color:rgba(251,249,244,.6);margin-top:6px}
 
 /* ---------- ps / closing ---------- */
@@ -948,26 +949,7 @@ h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--musgo-deep);text-wrap:b
 /* ================================================================
    RODA LANDING PAGE — standalone conversion page
    ================================================================ */
-.roda-lp { background:#FAF7F2; min-height:100vh; display:none; }
-.roda-lp--visible { display:block; }
-
-/* back nav */
-.roda-back {
-  background:rgba(250,247,242,.92); backdrop-filter:blur(10px);
-  border-bottom:1px solid #E5DED4; padding:14px 28px;
-  display:flex; align-items:center; gap:12px;
-  position:sticky; top:0; z-index:50;
-}
-.roda-back__logo { height:30px; width:auto; }
-.roda-back__sep { color:#E5DED4; font-size:18px; }
-.roda-back__name { font-size:13px; color:var(--musgo); font-weight:600; letter-spacing:.04em; }
-.roda-back__btn {
-  margin-left:auto; display:flex; align-items:center; gap:6px;
-  font-size:13px; color:var(--ink-soft); font-weight:500;
-  background:var(--paper-warm); border:1px solid var(--rule);
-  padding:7px 14px; border-radius:8px; cursor:pointer; transition:all .2s; font-family:'Poppins',sans-serif;
-}
-.roda-back__btn:hover { background:var(--bege); color:var(--musgo-deep); }
+.roda-lp { background:#FAF7F2; min-height:100vh; }
 
 /* ── HERO ── */
 .rl-hero {
@@ -1262,35 +1244,10 @@ h1,h2,h3,h4{font-family:'Poppins',sans-serif;color:var(--musgo-deep);text-wrap:b
 
 <div id="root"></div>
 
-<script type="text/babel" src="tweaks-panel.jsx"></script>
 <script type="text/babel" data-presets="env,react">
 
 const { useState } = React;
 
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "headlineVariant": "v1",
-  "heroBg": "bege",
-  "showStickyCTA": true,
-  "ctaLabel": "Quero encontrar meu grupo"
-} /*EDITMODE-END*/;
-
-const HEADLINES = {
-  v1: {
-    eyebrow: "Você não está sozinho(a)",
-    title: <>Você não precisa <span className="em"><span style={{color:"rgb(255, 255, 255)"}}><span style={{color:"#666748"}}>passar por isso</span></span></span> sozinho(a).</>,
-    sub: "Encontre apoio real + psicoterapia em grupo com pessoas que entendem você."
-  },
-  v2: {
-    eyebrow: "Cuidado em rede",
-    title: <>Psicoterapia em grupo + rede de apoio: <span className="em serif">o cuidado emocional</span> que você não encontra sozinho.</>,
-    sub: "Grupos terapêuticos online e presenciais conduzidos por psicólogas com mais de 20 anos de experiência."
-  },
-  v3: {
-    eyebrow: "Mais do que terapia",
-    title: <>Mais do que terapia: <span className="em serif">um lugar onde você é acolhido</span> e cria conexões que sustentam sua vida.</>,
-    sub: "Para você se cuidar, se entender e construir uma rede de apoio de verdade."
-  }
-};
 
 /* ============== ICONS (inline SVG) ============== */
 const Icon = ({ name, size = 22 }) => {
@@ -1313,1116 +1270,320 @@ const Icon = ({ name, size = 22 }) => {
   }
 };
 
-/* ============== NAV ============== */
-const Nav = ({ ctaLabel }) =>
-<nav className="nav" data-screen-label="Nav">
-    <div className="nav__inner">
-      <a href="#top" className="nav__logo">
-        <img src="assets/logo-primary.png" alt="Nossa Aldeia" />
-      </a>
-      <div className="nav__links">
-        <a href="#solucao">Como funciona</a>
-        <a href="#quiz">Encontre seu grupo</a>
-        <a href="#psicologas">Psicólogas</a>
-        <a href="#oferta">Investimento</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <a href="#oferta" className="nav__cta">{ctaLabel}</a>
-    </div>
-  </nav>;
-
-
-/* ============== HERO ============== */
-const Hero = ({ headlineVariant, ctaLabel }) => {
-  const h = HEADLINES[headlineVariant];
-  return (
-    <header id="top" className="hero" data-screen-label="01 Hero" style={{ backgroundColor: "rgb(234, 228, 219)" }}>
-      <div className="wrap hero__grid">
-        <div>
-          <span className="eyebrow hero__eyebrow">{h.eyebrow}</span>
-          <h1>{h.title}</h1>
-          <p className="hero__sub">{h.sub}</p>
-          <div className="hero__ctas">
-            <a href="#quiz" className="btn btn--primary">
-              {ctaLabel} <span className="btn__arrow"><Icon name="arrow" size={18} /></span>
-            </a>
-            <a href="#solucao" className="btn btn--secondary">Como funciona</a>
-          </div>
-          <p className="hero__micro">Veja os grupos disponíveis e escolha o que faz sentido pra você</p>
-
-          <div className="hero__trust">
-            <div className="hero__trust-item">
-              <strong>+20 anos</strong>
-              <span>de experiência clínica</span>
-            </div>
-            <div className="hero__trust-item">
-              <strong>UFSC · Unisul</strong>
-              <span>formação acadêmica</span>
-            </div>
-            <div className="hero__trust-item">
-              <strong>Online + Presencial</strong>
-              <span>você escolhe o formato</span>
-            </div>
-          </div>
-        </div>
-
-        <HeroArt />
-      </div>
-    </header>);
-
-};
-
-const HeroArt = () =>
-<div className="hero-art" aria-hidden="true">
-    <div className="hero-art__photo hero-art__photo--1">
-      <img src="assets/barbara.jpg" alt="" />
-    </div>
-    <div className="hero-art__photo hero-art__photo--2">
-      <img src="assets/eliane.jpg" alt="" />
-    </div>
-    <div className="hero-art__chip hero-art__chip--top">
-      <div className="hero-art__chip-dot"></div>
-      <div className="hero-art__chip-text">
-        <strong>Grupo aberto</strong>
-        <span>3 vagas · quartas 19h</span>
-      </div>
-    </div>
-    <div className="hero-art__chip hero-art__chip--bot">
-      <div className="hero-art__chip-text">
-        <strong style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',fontWeight:500,fontSize:18,color:'var(--terracota)'}}>Você é escutado</strong>
-        <span>antes de ser orientado</span>
-      </div>
-    </div>
-  </div>;
-
-
-/* ============== VALUE PROP (dynamic, less prose) ============== */
-const VALUE_BEATS = [
-  { k:'01', t:'Sentir', d:'Coisas que pesam, mesmo cercado de pessoas.' },
-  { k:'02', t:'Dividir', d:'Um espaço seguro pra falar do que se sente.' },
-  { k:'03', t:'Pertencer', d:'Vínculos com quem está na mesma travessia.' },
-];
-const ValueProp = () =>
-<section className="section value" data-screen-label="02 Proposta">
-    <div className="wrap value__inner">
-      <span className="eyebrow">A Nossa Aldeia</span>
-      <h2>
-        Tem coisas que você até pode lidar sozinho. <em>Mas será que precisa?.</em>
-      </h2>
-      <div className="divider-gold divider-gold--center"></div>
-      <div className="value__beats">
-        {VALUE_BEATS.map((b,i) =>
-          <div key={i} className="value-beat">
-            <span className="value-beat__k">{b.k}</span>
-            <strong className="value-beat__t">{b.t}</strong>
-            <span className="value-beat__d">{b.d}</span>
-          </div>
-        )}
-      </div>
-      <div className="value__quote">“Porque cura também acontece no <em>vínculo</em>.”</div>
-    </div>
-  </section>;
-
-
-/* ============== PAIN ============== */
-const PAIN_ITEMS = [
-{ icon: 'cloud', text: 'Sozinho(a), mesmo cercado de pessoas' },
-{ icon: 'pause', text: 'Cansaço que ninguém entende' },
-{ icon: 'lock', text: 'Dificuldade de falar sobre o que sente' },
-{ icon: 'heart', text: 'Relacionamentos que não funcionam' },
-{ icon: 'baby', text: 'Maternidade sobrecarregada' },
-{ icon: 'spark', text: 'Terapia individual que parece faltar algo' }];
-
-const Pain = () =>
-<section className="section pain" data-screen-label="03 Dor">
-    <div className="wrap">
-      <div className="pain__head">
-        <span className="eyebrow" style={{ color: 'var(--terracota)' }}>Você se reconhece?</span>
-        <h2>Você pode estar vivendo <span className="serif" style={{ color: 'var(--terracota)' }}>algo assim</span>:</h2>
-      </div>
-      <div className="pain__grid">
-        {PAIN_ITEMS.map((p, i) =>
-      <div key={i} className="pain__card">
-            <div className="pain__icon"><Icon name={p.icon} size={20} /></div>
-            <p>{p.text}</p>
-          </div>
-      )}
-      </div>
-      <div className="pain__bottom">
-        E talvez o mais difícil:
-        <strong>"Sentir que ninguém realmente entende o que você está passando."</strong>
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== SOLUÇÃO (dynamic, visual) ============== */
-const HOW_STEPS = [
-  { n:'01', icon:'spark', t:'Você escolhe', d:'Faz o quiz e descobre o grupo que mais combina com você.' },
-  { n:'02', icon:'users', t:'Você entra', d:'Conhece o grupo num primeiro encontro acolhedor, sem pressão.' },
-  { n:'03', icon:'heart', t:'Você floresce', d:'Encontros periódicos + rede de apoio contínua entre eles.' },
-];
-const SOL_GROUPS = [
-  { icon:'heart', name:'Solteiros & Relacionamentos', sub:'Compreender padrões afetivos e cultivar vínculos.' },
-  { icon:'baby', name:'Maternidade', sub:'Acolhimento para a sobrecarga e a solidão.' },
-  { icon:'leaf', name:'Público 50+', sub:'Revisitar trajetórias e reconstruir sentido.' },
-  { icon:'spark', name:'Vivências específicas', sub:'Lutos, transições, ansiedade e outros temas.' },
-];
-const Solution = () =>
-<section id="solucao" className="section sol" data-screen-label="04 Solução">
-    <div className="wrap">
-      <div className="sol__head">
-        <span className="eyebrow">A solução</span>
-        <h2>Você é <span className="em">escutado, reconhecido e acompanhado</span> — em rede.</h2>
-        <p className="sol__sub">Psicoterapia em grupo, conduzida por psicólogas clínicas. Em um espaço seguro, com pessoas que vivem o que você vive.</p>
-      </div>
-
-      <div className="sol__steps">
-        {HOW_STEPS.map((s,i) =>
-          <div key={i} className="sol-step">
-            <span className="sol-step__n">{s.n}</span>
-            <div className="sol-step__icon"><Icon name={s.icon} size={22}/></div>
-            <strong className="sol-step__t">{s.t}</strong>
-            <p className="sol-step__d">{s.d}</p>
-            {i < HOW_STEPS.length - 1 && <div className="sol-step__arrow">→</div>}
-          </div>
-        )}
-      </div>
-
-      <div className="sol__divider"><span>Grupos disponíveis</span></div>
-
-      <div id="grupos" className="sol__chips">
-        {SOL_GROUPS.map((g,i) =>
-          <div key={i} className="sol-chip">
-            <span className="sol-chip__ico"><Icon name={g.icon} size={18}/></span>
-            <div>
-              <strong>{g.name}</strong>
-              <span>{g.sub}</span>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="sol__cta-row">
-        <a href="#quiz" className="btn btn--primary">Descobrir meu grupo <span className="btn__arrow"><Icon name="arrow" size={18}/></span></a>
-        <a href="#vagas" className="sol__cta-link">Ver vagas abertas →</a>
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== QUIZ — encontre seu grupo ============== */
-const QUIZ_QS = [
-  { q:'Como você se sente quando pensa na sua vida afetiva e relacional hoje?',
-    opts:[
-      { l:'Estou solteiro(a) e às vezes me sinto sozinho(a)', s:{solteiros:3, geral:1} },
-      { l:'Estou em um relacionamento, mas algo não está bem', s:{relacionamentos:3, geral:1} },
-      { l:'Tenho dificuldade de confiar e me aproximar das pessoas', s:{relacionamentos:2, solteiros:2} },
-      { l:'Não é isso que mais me pesa agora', s:{geral:2} },
-    ]},
-  { q:'Com qual dessas experiências você mais se identifica?',
-    opts:[
-      { l:'Ser mãe e carregar muito peso sozinha', s:{maes:4, mulheres:1} },
-      { l:'Navegar a vida sendo quem sou (LGBTQIA+)', s:{lgbt:4} },
-      { l:'Cheguei aos 50+ e preciso de apoio pra esta fase', s:{cinquenta:4} },
-      { l:'Nenhuma dessas, mas me sinto sobrecarregado(a)', s:{geral:3} },
-    ]},
-  { q:'Quando pensa em buscar apoio emocional, o que mais te atrai?',
-    opts:[
-      { l:'Um espaço só para mulheres, onde me sinta acolhida', s:{mulheres:3, maes:1} },
-      { l:'Um espaço só para homens, onde possa falar de verdade', s:{homens:4} },
-      { l:'Um grupo misto, com perspectivas variadas', s:{geral:2, solteiros:1, relacionamentos:1} },
-      { l:'Pessoas que vivem experiências parecidas com as minhas', s:{lgbt:2, cinquenta:1, maes:1} },
-    ]},
-  { q:'Qual frase mais representa o que você carrega hoje?',
-    opts:[
-      { l:'Quero entender por que meus relacionamentos não funcionam', s:{relacionamentos:3, solteiros:1} },
-      { l:'Preciso de um lugar pra falar sobre quem eu sou', s:{lgbt:3, geral:1} },
-      { l:'Me sinto invisível ou incompreendido(a) na vida', s:{geral:2, cinquenta:1, homens:1} },
-      { l:'Quero me desenvolver, não só resolver algo', s:{geral:3} },
-    ]},
-  { q:'Como você se identifica?',
-    opts:[
-      { l:'Mulher cisgênero', s:{mulheres:2, maes:1} },
-      { l:'Homem cisgênero', s:{homens:2} },
-      { l:'Pessoa LGBTQIA+', s:{lgbt:3} },
-      { l:'Prefiro não dizer / outro', s:{geral:1} },
-    ]},
-  { q:'O que você mais quer encontrar no grupo?',
-    opts:[
-      { l:'Pessoas que entendem o que é ser mãe', s:{maes:3} },
-      { l:'Entender meus padrões em relacionamentos', s:{relacionamentos:3, solteiros:1} },
-      { l:'Acolhimento e escuta sem julgamento', s:{geral:3, mulheres:1, homens:1} },
-      { l:'Conexão com pessoas na mesma fase da vida', s:{cinquenta:3, geral:1} },
-    ]},
-];
-
-const GROUP_INFO = {
-  solteiros: { name:'Solteiros & Conexões', sub:'Para quem busca compreender padrões afetivos e cultivar vínculos.', schedule:'Segundas · 20h · Online' },
-  relacionamentos: { name:'Vida a Dois', sub:'Para quem está em relacionamentos e quer entender o que pesa.', schedule:'Quintas · 20h · Online' },
-  maes: { name:'Maternidade Real', sub:'Acolhimento para a sobrecarga e a solidão da maternidade.', schedule:'Quartas · 19h · Online' },
-  mulheres: { name:'Círculo de Mulheres', sub:'Espaço só para mulheres. Escuta sem julgamento.', schedule:'Sábados · 10h · Presencial' },
-  homens: { name:'Roda de Homens', sub:'Espaço só para homens, onde dá pra falar de verdade.', schedule:'Terças · 20h · Online' },
-  lgbt: { name:'Aldeia LGBTQIA+', sub:'Para falar sobre quem você é, sem precisar explicar.', schedule:'Sextas · 19h30 · Online' },
-  cinquenta: { name:'Aldeia 50+', sub:'Para revisitar trajetórias e construir pertencimento.', schedule:'Terças · 18h30 · Presencial' },
-  geral: { name:'Aldeia Geral', sub:'Grupo misto para quem busca acolhimento amplo e escuta.', schedule:'Quartas · 20h · Online' },
-};
-
-function computeResult(answers){
-  const score = { solteiros:0, relacionamentos:0, maes:0, mulheres:0, homens:0, lgbt:0, cinquenta:0, geral:0 };
-  answers.forEach((ai, qi) => {
-    if (ai == null) return;
-    const s = QUIZ_QS[qi].opts[ai].s || {};
-    Object.keys(s).forEach(k => score[k] = (score[k]||0) + s[k]);
-  });
-  const sorted = Object.entries(score).sort((a,b) => b[1]-a[1]);
-  let primary = sorted[0];
-  // homens só se >=3
-  if (primary[0] === 'homens' && primary[1] < 3){
-    sorted.shift();
-    primary = sorted[0];
-  }
-  // fallback
-  if (!primary || primary[1] < 3){
-    return { primaryKey:'geral', secondaryKey:null, score };
-  }
-  let secondary = sorted.find(([k,v]) => k !== primary[0] && v >= 2);
-  return { primaryKey: primary[0], secondaryKey: secondary ? secondary[0] : null, score };
-}
-
-const Quiz = () => {
-  const [step, setStep] = useState(-1); // -1 intro, 0..N-1 questions, N result
-  const [answers, setAnswers] = useState(Array(QUIZ_QS.length).fill(null));
-
-  const total = QUIZ_QS.length;
-  const isResult = step >= total;
-  const progress = step < 0 ? 0 : Math.min(((step) / total) * 100, 100);
-
-  const choose = (i) => {
-    const next = [...answers];
-    next[step] = i;
-    setAnswers(next);
-    setTimeout(() => setStep(s => s + 1), 180);
-  };
-  const back = () => setStep(s => Math.max(-1, s - 1));
-  const restart = () => { setAnswers(Array(total).fill(null)); setStep(-1); };
-
-  const result = isResult ? computeResult(answers) : null;
-  const primary = result && GROUP_INFO[result.primaryKey];
-  const secondary = result && result.secondaryKey && GROUP_INFO[result.secondaryKey];
-
-  return (
-    <section id="quiz" className="section quiz" data-screen-label="Quiz">
-      <div className="wrap">
-        <div className="quiz__head">
-          <span className="eyebrow">Quiz · 1 minuto</span>
-          <h2>Encontre o <span className="serif" style={{color:'var(--terracota)'}}>grupo certo</span> pra você.</h2>
-          <p>6 perguntas rápidas. Sem cadastro. Recomendamos o grupo que mais combina com o que você está vivendo.</p>
-        </div>
-
-        <div className="quiz__card">
-          {step === -1 && (
-            <div className="quiz__intro">
-              <img src="assets/logo-secondary.png" alt="Nossa Aldeia" className="quiz__logo" />
-              <h3 style={{marginTop:14}}>Vamos começar?</h3>
-              <p>Responda no seu tempo. Você pode voltar a qualquer momento.</p>
-              <button className="btn btn--primary quiz__start" onClick={()=>setStep(0)}>
-                Começar quiz <span className="btn__arrow"><Icon name="arrow" size={18}/></span>
-              </button>
-              <div className="quiz__meta">
-                <span><strong>·</strong> 6 perguntas</span>
-                <span><strong>·</strong> ~1 min</span>
-                <span><strong>·</strong> 100% confidencial</span>
-              </div>
-            </div>
-          )}
-
-          {step >= 0 && step < total && (
-            <>
-              <div className="quiz__progress">
-                <div className="quiz__progress-bar">
-                  <div className="quiz__progress-fill" style={{width:`${((step+1)/total)*100}%`}}></div>
-                </div>
-                <div className="quiz__progress-text">{step+1} / {total}</div>
-              </div>
-              <div className="quiz__step">Pergunta {step+1}</div>
-              <h3 className="quiz__q">{QUIZ_QS[step].q}</h3>
-              <div className="quiz__opts">
-                {QUIZ_QS[step].opts.map((o,i)=>(
-                  <button key={i} className="quiz__opt" onClick={()=>choose(i)}>
-                    <span className="quiz__opt-letter">{String.fromCharCode(65+i)}</span>
-                    <span>{o.l}</span>
-                  </button>
-                ))}
-              </div>
-              <div className="quiz__nav">
-                <button className="quiz__back" onClick={back} disabled={step===0}>
-                  ← Voltar
-                </button>
-                <span style={{fontSize:13,color:'var(--ink-soft)'}}>Escolha uma opção pra continuar</span>
-              </div>
-            </>
-          )}
-
-          {isResult && primary && (
-            <div className="quiz__result">
-              <div className="quiz__result-tag">Sua recomendação</div>
-              <h3>{primary.name}</h3>
-              <p className="quiz__result-sub">{primary.sub}</p>
-              <div className="quiz__result-box">
-                <h4>Próxima turma</h4>
-                <p><strong>{primary.schedule}</strong> · vagas limitadas para preservar a qualidade do grupo.</p>
-              </div>
-              {secondary && (
-                <div className="quiz__result-box" style={{marginTop:12,background:'var(--paper-warm)'}}>
-                  <h4>Também combina com você</h4>
-                  <p><strong>{secondary.name}</strong> — {secondary.sub}</p>
-                </div>
-              )}
-              <div className="quiz__result-ctas">
-                <a href="#oferta" className="btn btn--primary">
-                  Quero esse grupo <span className="btn__arrow"><Icon name="arrow" size={18}/></span>
-                </a>
-                <a href="#psicologas" className="btn btn--secondary">Conhecer as psicólogas</a>
-              </div>
-              <button className="quiz__restart" onClick={restart}>Refazer o quiz</button>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ============== BENEFITS ============== */
-const BENEFITS = [
-{ n: '01', t: 'Menos sozinho(a)', d: 'Você percebe que não é só você.' },
-{ n: '02', t: 'Sem julgamento', d: 'Fala no seu tempo, sem pressão.' },
-{ n: '03', t: 'Aprende com o outro', d: 'A vivência alheia ilumina a sua.' },
-{ n: '04', t: 'Clareza emocional', d: 'Você organiza o que sente.' },
-{ n: '05', t: 'Conexões reais', d: 'Vínculos que ultrapassam as sessões.' },
-{ n: '06', t: 'Suporte contínuo', d: 'Uma rede que se mantém entre encontros.' }];
-
-const Benefits = () =>
-<section className="section benefits" data-screen-label="05 Benefícios">
-    <div className="wrap">
-      <div className="benefits__head">
-        <span className="eyebrow">Transformação</span>
-        <h2>Ao participar da Nossa Aldeia, <span className="serif" style={{ color: 'var(--terracota)' }}>você</span>:</h2>
-      </div>
-      <div className="benefits__grid">
-        {BENEFITS.map((b) =>
-      <article key={b.n} className="benefit">
-            <span className="benefit__num">{b.n}</span>
-            <h3>{b.t}</h3>
-            <p>{b.d}</p>
-          </article>
-      )}
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== TESTIMONIALS ============== */
-const TESTIS = [
-{ t: 'Eu fazia terapia individual há anos, mas nunca tinha sentido esse tipo de conexão. O grupo me fez perceber que eu não estou sozinho.', a: 'Marcos, 41', g: 'Grupo Solteiros & Relacionamentos', i: 'M' },
-{ t: 'Ser mãe parecia um peso solitário. Aqui, encontrei acolhimento de verdade — e mulheres que entendem sem precisar explicar.', a: 'Juliana, 34', g: 'Grupo Maternidade', i: 'J' },
-{ t: 'Eu entrei inseguro… hoje eu tenho pessoas que me escutam de verdade. É outro tipo de cuidado.', a: 'Roberto, 58', g: 'Grupo 50+', i: 'R' }];
-
-const Testimonials = () =>
-<section className="section testi" data-screen-label="06 Depoimentos">
-    <div className="wrap">
-      <div className="testi__head">
-        <span className="eyebrow" style={{ color: 'var(--dourado-light)' }}>Quem já vive a Aldeia</span>
-        <h2>Histórias de quem encontrou <span className="serif">um lugar pra pertencer</span>.</h2>
-      </div>
-      <div className="testi__grid">
-        {TESTIS.map((t, i) =>
-      <article key={i} className="testi__card">
-            <span className="testi__quote">"</span>
-            <p className="testi__text">{t.t}</p>
-            <div className="testi__author">
-              <div className="testi__avatar">{t.i}</div>
-              <div className="testi__author-info">
-                <strong>{t.a}</strong>
-                <span>{t.g}</span>
-              </div>
-            </div>
-          </article>
-      )}
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== AUTORIDADE ============== */
-const Authority = () =>
-<section id="psicologas" className="section auth" data-screen-label="07 Psicólogas">
-    <div className="wrap">
-      <div className="auth__head">
-        <span className="eyebrow">Quem conduz</span>
-        <h2>Psicólogas clínicas com <span className="serif" style={{ color: 'var(--terracota)' }}>mais de 20 anos</span> de experiência.</h2>
-      </div>
-      <div className="auth__grid">
-
-        <article className="psi">
-          <div className="psi__photo"><img src="assets/barbara.jpg" alt="Barbara Stürmer" /></div>
-          <div className="psi__info">
-            <span className="psi__role">Psicóloga clínica · CRP</span>
-            <h3 className="psi__name">Barbara Stürmer</h3>
-            <div className="psi__rule"></div>
-            <p className="psi__cred">"A Nossa Aldeia é um sonho sonhado junto com a Eliane e hoje com vocês para construirmos um mundo melhor."</p>
-            <div className="psi__tags">
-              <span className="psi__tag">Formada pela UFSC</span>
-              <span className="psi__tag">+ 20 anos de prática clínica</span>
-            </div>
-          </div>
-        </article>
-
-        <article className="psi">
-          <div className="psi__photo"><img src="assets/eliane.jpg" alt="Eliane Cromack" /></div>
-          <div className="psi__info">
-            <span className="psi__role">Psicóloga clínica · CRP</span>
-            <h3 className="psi__name">Eliane Cromack</h3>
-            <div className="psi__rule"></div>
-            <p className="psi__cred">"Acredito profundamente nos vínculos e na transformação através deles: amizade, família e verdadeiras conexões."</p>
-            <div className="psi__tags">
-              <span className="psi__tag">Formada pela Unisul</span>
-              <span className="psi__tag">+ 20 anos de prática clínica</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-      <p className="auth__note">"Você não está em um grupo qualquer. Está em um espaço profissional e estruturado."</p>
-    </div>
-  </section>;
-
-
-/* ============== OFFER ============== */
-const Offer = () =>
-<section id="oferta" className="section offer" data-screen-label="08 Oferta">
-    <div className="wrap">
-      <div className="offer__head">
-        <span className="eyebrow">Investimento</span>
-        <h2>Escolha o formato <span className="serif" style={{ color: 'var(--terracota)' }}>ideal pra você</span>.</h2>
-      </div>
-
-      <div className="offer__grid">
-        <div className="plan">
-          <span className="plan__tag">Online</span>
-          <h3 className="plan__name">Sessões em grupo · Online</h3>
-          <div className="plan__price">
-            <span className="plan__price-currency">R$</span>
-            <span className="plan__price-value">200</span>
-            <span className="plan__price-per">/ encontro mensal</span>
-          </div>
-          <ul className="plan__list">
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Encontros online ao vivo</li>
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Grupos por tema (vínculos, maternidade, 50+)</li>
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Conduzidos por psicóloga clínica</li>
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Acesso ao grupo de apoio (WhatsApp)</li>
-          </ul>
-          <a href="#final" className="btn btn--secondary">Quero o formato online</a>
-        </div>
-
-        <div className="plan plan--featured">
-          <span className="plan__badge">Mais escolhido</span>
-          <span className="plan__tag">Presencial</span>
-          <h3 className="plan__name">Sessões em grupo · Presencial</h3>
-          <div className="plan__price">
-            <span className="plan__price-currency">R$</span>
-            <span className="plan__price-value">250</span>
-            <span className="plan__price-per">/ encontro</span>
-          </div>
-          <ul className="plan__list">
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Encontros presenciais em sala acolhedora</li>
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Vínculo mais profundo com o grupo</li>
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> Conduzidos por psicóloga clínica</li>
-            <li><span className="plan__check"><Icon name="check" size={18} /></span> E-books terapêuticos + grupo de apoio</li>
-          </ul>
-          <a href="#final" className="btn btn--primary">Quero o formato presencial <span className="btn__arrow"><Icon name="arrow" size={18} /></span></a>
-        </div>
-      </div>
-
-      <div className="offer__packages">
-        <div className="pack-group">
-          <div className="pack-group__head">
-            <span className="pack-group__tag">Online</span>
-            <span className="pack-group__per">R$ 200 / encontro</span>
-          </div>
-          <div className="pack-group__rows">
-            <div className="pack-row">
-              <div className="pack-row__name">Pacote inicial<small>5 encontros</small></div>
-              <div className="pack-row__price">R$ 1.000</div>
-              <a href="#oferta" className="pack-row__cta">Quero este</a>
-            </div>
-            <div className="pack-row pack-row--featured">
-              <div className="pack-row__name">Pacote completo<small>10 encontros · continuidade</small></div>
-              <div className="pack-row__price">R$ 2.000</div>
-              <a href="#oferta" className="pack-row__cta">Quero este</a>
-            </div>
-          </div>
-        </div>
-        <div className="pack-group">
-          <div className="pack-group__head">
-            <span className="pack-group__tag pack-group__tag--terra">Presencial</span>
-            <span className="pack-group__per">R$ 250 / encontro</span>
-          </div>
-          <div className="pack-group__rows">
-            <div className="pack-row">
-              <div className="pack-row__name">Pacote inicial<small>5 encontros</small></div>
-              <div className="pack-row__price">R$ 1.250</div>
-              <a href="#oferta" className="pack-row__cta">Quero este</a>
-            </div>
-            <div className="pack-row pack-row--featured">
-              <div className="pack-row__name">Pacote completo<small>10 encontros · continuidade</small></div>
-              <div className="pack-row__price">R$ 2.500</div>
-              <a href="#oferta" className="pack-row__cta">Quero este</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bonus">
-        <div className="bonus__head">
-          <h3>Bônus inclusos</h3>
-          <p>Você paga apenas pelas sessões. O resto é cuidado.</p>
-        </div>
-        <div className="bonus__list">
-          <div className="bonus__item">
-            <strong>E-books terapêuticos</strong>
-            <span>Materiais para aprofundar entre encontros.</span>
-          </div>
-          <div className="bonus__item">
-            <strong>Grupo de apoio (WhatsApp)</strong>
-            <span>Continuidade da rede fora das sessões.</span>
-          </div>
-          <div className="bonus__item">
-            <strong>Acompanhamento contínuo</strong>
-            <span>Suporte que vai além do encontro mensal.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== OBJECTIONS ============== */
-const OBJ = [
-{ q: 'Nunca fiz terapia em grupo, será que funciona?', a: 'Sim — e para muitas pessoas, funciona ainda melhor. Você não só fala, mas se reconhece no outro.' },
-{ q: 'Tenho vergonha de falar na frente de outras pessoas.', a: 'Você não é obrigado(a) a falar. Fala no seu tempo. O espaço é respeitoso e acolhedor.' },
-{ q: 'E se eu não me identificar com o grupo?', a: 'Os grupos são organizados por temas — isso aumenta muito a identificação desde o início.' },
-{ q: 'Está caro.', a: 'Esse é o valor real de um acompanhamento qualificado — e aqui você ainda recebe rede de apoio que a terapia individual não oferece.' },
-{ q: 'Não tenho tempo.', a: 'Os encontros são organizados com antecedência. Você escolhe um grupo que encaixa na sua rotina.' },
-{ q: 'Posso fazer junto com terapia individual?', a: 'Sim — inclusive potencializa o processo. Os dois caminhos se complementam.' }];
-
-const Objections = () =>
-<section className="section obj" data-screen-label="09 Objeções">
-    <div className="wrap">
-      <div className="obj__head">
-        <span className="eyebrow">Provavelmente você está pensando…</span>
-        <h2>Algumas <span className="serif" style={{ color: 'var(--terracota)' }}>dúvidas honestas</span> que escutamos.</h2>
-      </div>
-      <div className="obj__grid">
-        {OBJ.map((o, i) =>
-      <div key={i} className="obj__item">
-            <div className="obj__q">{o.q}</div>
-            <div className="obj__a">{o.a}</div>
-          </div>
-      )}
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== GUARANTEE (compact inline seal, used inside Offer) ============== */
-const GuaranteeInline = () =>
-<div className="guar-inline">
-    <div className="guar-inline__seal">
-      <strong>7</strong>
-      <span>dias</span>
-    </div>
-    <div className="guar-inline__text">
-      <strong>Garantia incondicional de 7 dias.</strong>
-      Se sentir que não é pra você, devolvemos seu investimento.
-    </div>
-  </div>;
-
-
-/* ============== GROUPS (was Urgency) ============== */
-const GROUPS_OPEN = [
-  { name: 'Maternidade Real', meta: 'Quartas · 19h · Online', price: 'R$ 200', priceMeta: '/ encontro', fill: 78, status: '3 vagas', tone: '' },
-  { name: '50+ · Reconexão', meta: 'Terças · 18h30 · Presencial', price: 'R$ 250', priceMeta: '/ encontro', fill: 92, status: 'Apenas 1 vaga', tone: 'low' },
-  { name: 'Solteiros & Conexões', meta: 'Segundas · 20h · Online', price: 'R$ 200', priceMeta: '/ encontro', fill: 62, status: '5 vagas', tone: '' },
-  { name: 'Vida a Dois', meta: 'Quintas · 20h · Online', price: 'R$ 200', priceMeta: '/ encontro', fill: 55, status: '6 vagas', tone: '' },
-  { name: 'Roda de Homens', meta: 'Terças · 20h · Online', price: 'R$ 200', priceMeta: '/ encontro', fill: 70, status: '4 vagas', tone: '' },
-  { name: 'Círculo de Mulheres', meta: 'Sábados · 10h · Presencial', price: 'R$ 250', priceMeta: '/ encontro', fill: 100, status: 'Lista de espera', tone: 'full' },
-  { name: 'Aldeia LGBTQIA+', meta: 'Sextas · 19h30 · Online', price: 'R$ 200', priceMeta: '/ encontro', fill: 48, status: '7 vagas', tone: '' },
-];
-
-const Groups = () =>
-<section id="vagas" className="section groups" data-screen-label="11 Grupos">
-    <div className="wrap">
-      <div className="groups__head">
-        <span className="eyebrow" style={{color:'var(--terracota)'}}>Vagas limitadas · turmas em formação</span>
-        <h2>Os grupos são pequenos <span className="serif" style={{color:'var(--terracota)'}}>por escolha.</span></h2>
-        <p>Para garantir qualidade, segurança e profundidade do vínculo, cada grupo tem vagas limitadas. Quando uma turma fecha, só é possível entrar na próxima formação.</p>
-      </div>
-      <div className="groups__list">
-        {GROUPS_OPEN.map((g, i) => {
-          const cls = 'group-row' + (g.tone === 'low' ? ' group-row--low' : '') + (g.tone === 'full' ? ' group-row--full' : '');
-          const isFull = g.tone === 'full';
-          return (
-            <div key={i} className={cls}>
-              <div className="group-row__num">{String(i+1).padStart(2,'0')}</div>
-              <div className="group-row__main">
-                <div className="group-row__name">{g.name}</div>
-                <div className="group-row__meta">{g.meta}</div>
-              </div>
-              <div className="group-row__bar-wrap">
-                <div className="group-row__bar"><div className="group-row__bar-fill" style={{width:`${g.fill}%`}}></div></div>
-                <div className={'group-row__status' + (isFull ? ' group-row__status--full' : '')}>{g.status}</div>
-              </div>
-              <div className="group-row__price">{g.price}<small>{g.priceMeta}</small></div>
-              <a href={isFull ? '#' : '#oferta'} className={'group-row__cta' + (isFull ? ' group-row__cta--full' : '')}>
-                {isFull ? 'Lista de espera' : <>Inscreva-se <Icon name="arrow" size={14} /></>}
-              </a>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== FAQ ============== */
-const FAQS = [
-['Preciso já fazer terapia para entrar?', 'Não. Você pode estar começando agora mesmo. Muitos participantes começam o processo terapêutico justamente pelo grupo.'],
-['Posso fazer junto com terapia individual?', 'Sim — inclusive potencializa o processo. Os dois espaços se complementam: o individual aprofunda o seu olhar; o grupo te coloca em relação.'],
-['Como sei qual grupo escolher?', 'Você verá os temas disponíveis e pode escolher o que mais se conecta com você. Em caso de dúvida, fazemos uma conversa inicial sem custo.'],
-['Os encontros são gravados?', 'Não. Para garantir confidencialidade absoluta, nenhum encontro é gravado.'],
-['Como funcionam os horários?', 'Cada grupo tem dias e horários fixos, informados antes da inscrição. Isso dá previsibilidade e fortalece o vínculo do grupo.'],
-['Posso trocar de grupo depois?', 'Depende da disponibilidade — avaliamos caso a caso, com cuidado para não interromper bruscamente o processo do grupo atual.']];
-
-const FAQ = () =>
-<section id="faq" className="section faq" data-screen-label="12 FAQ">
-    <div className="wrap">
-      <div className="faq__head">
-        <span className="eyebrow">Perguntas frequentes</span>
-        <h2>O que costumam <span className="serif" style={{ color: 'var(--terracota)' }}>nos perguntar</span>.</h2>
-      </div>
-      <div className="faq__list">
-        {FAQS.map(([q, a], i) =>
-      <details key={i} className="faq__item">
-            <summary className="faq__q">{q}</summary>
-            <div className="faq__a">{a}</div>
-          </details>
-      )}
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== FINAL CTA ============== */
-const FinalCTA = ({ ctaLabel }) =>
-<section id="final" className="section final" data-screen-label="13 CTA Final">
-    <div className="wrap final__inner">
-      <span className="eyebrow" style={{ color: 'var(--dourado-light)' }}>Sua aldeia te espera</span>
-      <h2>Você não precisa continuar carregando <span className="em">tudo sozinho(a).</span></h2>
-      <p className="final__sub">Escolha seu grupo e comece seu processo com apoio real — psicoterapia + rede + acompanhamento contínuo.</p>
-      <a href="#oferta" className="btn final__btn">Quero fazer parte da Nossa Aldeia <span className="btn__arrow"><Icon name="arrow" size={18} /></span></a>
-      <p className="final__micro">Sem compromisso inicial · você escolhe no seu tempo · garantia de 7 dias</p>
-    </div>
-  </section>;
-
-
-/* ============== PS QUOTE (mid-page, terracota) ============== */
-const PSQuote = () =>
-<section className="section section--tight psq" data-screen-label="PS Citação">
-    <div className="wrap psq__inner">
-      <span className="eyebrow psq__eyebrow">Uma palavra das psicólogas</span>
-      <p className="psq__quote">
-        “Talvez você esteja acostumado(a) a lidar com tudo sozinho(a). <em>Mas isso não significa que precisa continuar assim.</em> A Nossa Aldeia existe pra você encontrar apoio onde menos esperava — em pessoas atravessando algo parecido com você, com cuidado profissional segurando o espaço.”
-      </p>
-      <div className="psq__rule"></div>
-      <div className="psq__sign">
-        Com cuidado,
-        <span className="psq__sign-name">Barbara &amp; Eliane</span>
-      </div>
-    </div>
-  </section>;
-
-/* ============== EBOOKS ============== */
-const Ebooks = () =>
-<section id="ebooks" className="section ebooks" data-screen-label="Ebooks">
-    <div className="wrap">
-      <div className="ebooks__head">
-        <span className="eyebrow">Materiais gratuitos</span>
-        <h2>Leituras pra você <span className="serif" style={{color:'var(--terracota)'}}>começar agora.</span></h2>
-        <p>Nossos e-books reúnem reflexões e ferramentas que usamos com os grupos. Baixe gratuitamente — e leve com você pro próximo encontro.</p>
-      </div>
-      <div className="ebooks__grid">
-        <article className="ebook">
-          <div className="ebook__cover ebook__cover--1">
-            <span className="ebook__cover-tag">Nossa Aldeia</span>
-            <span className="ebook__cover-title">Vínculos<br/>possíveis</span>
-            <span className="ebook__cover-author">Barbara &amp; Eliane</span>
-          </div>
-          <div className="ebook__info">
-            <span className="ebook__tag">E-book · Solteiros</span>
-            <h3 className="ebook__title">Vínculos Possíveis</h3>
-            <p className="ebook__desc">Reflexões para solteiros que querem entender padrões afetivos e cultivar vínculos mais saudáveis — a partir de quem você é hoje.</p>
-            <a href="#" className="ebook__cta">Baixar gratuitamente</a>
-          </div>
-        </article>
-        <article className="ebook">
-          <div className="ebook__cover ebook__cover--2">
-            <span className="ebook__cover-tag">Nossa Aldeia</span>
-            <span className="ebook__cover-title">Maternidade<br/>sem receita</span>
-            <span className="ebook__cover-author">Barbara &amp; Eliane</span>
-          </div>
-          <div className="ebook__info">
-            <span className="ebook__tag">E-book · Maternidade</span>
-            <h3 className="ebook__title">Maternidade sem receita</h3>
-            <p className="ebook__desc">Para mães que carregam sobrecarga, culpa e a solidão do dia a dia — sem fórmulas prontas, com escuta de quem entende.</p>
-            <a href="#" className="ebook__cta">Baixar gratuitamente</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== GUARANTEE BAR ============== */
-const GuaranteeBar = () =>
-<section className="guar-bar" data-screen-label="14 Garantia">
-    <div className="wrap">
-      <div className="guar-bar__inner">
-        <div className="guar-bar__seal" aria-hidden="true">
-          <strong>7</strong>
-          <span>dias</span>
-        </div>
-        <div className="guar-bar__text">
-          <span className="guar-bar__eyebrow">Garantia incondicional</span>
-          <h3 className="guar-bar__title">7 dias pra sentir <em>se faz sentido pra você.</em></h3>
-          <p className="guar-bar__sub">Participe do primeiro encontro. Se não fizer sentido, devolvemos integralmente — sem perguntas, sem burocracia.</p>
-        </div>
-      </div>
-    </div>
-  </section>;
-
-
-/* ============== NEWS / TRAVEL SIGNUP ============== */
-const NewsSignup = () => {
-  const [step, setStep] = React.useState(0); // 0 name+email, 1 phone, 2 interest+city, 3 success
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [interest, setInterest] = React.useState('');
-  const [city, setCity] = React.useState('');
-
-  const formatPhone = (v) => {
-    const d = v.replace(/\D/g, '').slice(0, 11);
-    if (d.length <= 2) return d.length ? `(${d}` : '';
-    if (d.length <= 6) return `(${d.slice(0,2)}) ${d.slice(2)}`;
-    if (d.length <= 10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`;
-    return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
-  };
-
-  const valid1 = name.trim().length > 1 && /\S+@\S+\.\S+/.test(email);
-  const valid2 = phone.replace(/\D/g, '').length >= 10;
-  const valid3 = interest.length > 0;
-
-  const submit = () => setStep(3);
-
-  return (
-    <section className="news" data-screen-label="13 Newsletter">
-      <div className="wrap">
-        <div className="news__grid">
-          <div>
-            <span className="news__tag"><span className="news__tag-dot"></span>Carta da Aldeia</span>
-            <h2>Reflexões que chegam <span className="em">no tempo certo.</span></h2>
-            <p className="news__lead">
-              Uma carta quinzenal com reflexões, perguntas pra pensar e convites pra encontros — escrita à mão pelas nossas psicólogas.
-            </p>
-            <div className="news__bullets">
-              <div className="news__bullet">
-                <div className="news__bullet-ico"><Icon name="leaf" size={14} /></div>
-                <div>Reflexões breves sobre vínculo, escuta e cuidado coletivo.</div>
-              </div>
-              <div className="news__bullet">
-                <div className="news__bullet-ico"><Icon name="heart" size={14} /></div>
-                <div>Convites antecipados pra novos grupos e encontros abertos.</div>
-              </div>
-              <div className="news__bullet">
-                <div className="news__bullet-ico"><Icon name="check" size={14} /></div>
-                <div>Sem spam, sem promoções. Você descadastra com um clique.</div>
-              </div>
-            </div>
-          </div>
-
-          <form className="news__form" onSubmit={(e) => {e.preventDefault();if (step === 0 && valid1) setStep(1);else if (step === 1 && valid2) setStep(2);else if (step === 2 && valid3) submit();}}>
-            {step < 3 &&
-            <>
-                <div className="news__form-head">
-                  <span className="news__form-title">Receber a carta</span>
-                  <span className="news__form-step">{step + 1} de 3</span>
-                </div>
-                <div className="news__form-bar"><div className="news__form-bar-fill" style={{ width: ((step + 1) / 3) * 100 + '%' }}></div></div>
-              </>
-            }
-
-            {step === 0 &&
-            <>
-                <div className="news__field">
-                  <label>Como podemos te chamar?</label>
-                  <input className="news__input" type="text" placeholder="Seu primeiro nome" value={name} onChange={(e) => setName(e.target.value)} />
-                </div>
-                <div className="news__field">
-                  <label>Seu melhor e-mail</label>
-                  <input className="news__input" type="email" placeholder="voce@exemplo.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-                  <span className="news__hint">Usamos só pra enviar a carta — nada além disso.</span>
-                </div>
-                <div className="news__form-actions">
-                  <button type="submit" className="news__btn" disabled={!valid1}>
-                    Continuar <Icon name="arrow" size={14} />
-                  </button>
-                </div>
-              </>
-            }
-
-            {step === 1 &&
-            <>
-                <div className="news__field">
-                  <label>Seu telefone (WhatsApp)</label>
-                  <input className="news__input" type="tel" placeholder="(48) 99999-9999" value={phone} onChange={(e) => setPhone(formatPhone(e.target.value))} />
-                  <span className="news__hint">Para avisos rápidos sobre novos grupos e encontros — enviamos no máximo 1 mensagem por mês.</span>
-                </div>
-                <div className="news__form-actions">
-                  <button type="button" className="news__btn-back" onClick={() => setStep(0)}>Voltar</button>
-                  <button type="submit" className="news__btn" disabled={!valid2}>
-                    Continuar <Icon name="arrow" size={14} />
-                  </button>
-                </div>
-              </>
-            }
-
-            {step === 2 &&
-            <>
-                <div className="news__field">
-                  <label>O que mais te interessa?</label>
-                  <select className="news__input" value={interest} onChange={(e) => setInterest(e.target.value)}>
-                    <option value="">Escolha uma opção</option>
-                    <option value="solteiros">Solteiros · vínculos</option>
-                    <option value="maes">Maternidade</option>
-                    <option value="casais">Casais · relação</option>
-                    <option value="jovens">Jovens adultos</option>
-                    <option value="todos">Todos os temas</option>
-                  </select>
-                </div>
-                <div className="news__field">
-                  <label>Cidade <span style={{ color: 'var(--ink-soft)', fontWeight: 400, opacity: .6 }}>(opcional)</span></label>
-                  <input className="news__input" type="text" placeholder="Ex.: Florianópolis" value={city} onChange={(e) => setCity(e.target.value)} />
-                </div>
-                <div className="news__form-actions">
-                  <button type="button" className="news__btn-back" onClick={() => setStep(1)}>Voltar</button>
-                  <button type="submit" className="news__btn" disabled={!valid3}>
-                    Quero receber <Icon name="arrow" size={14} />
-                  </button>
-                </div>
-              </>
-            }
-
-            {step === 3 &&
-            <div className="news__success">
-                <div className="news__success-icon"><Icon name="check" size={28} /></div>
-                <h3>Pronto, {name.split(' ')[0]}.</h3>
-                <p>A próxima carta chega em breve no seu e-mail.</p>
-                <p style={{ fontSize: 13.5, marginTop: 6 }}>Enquanto isso, fica o convite pra um chá e uma boa leitura. ☕</p>
-                <p className="news__small">Você pode descadastrar com um clique a qualquer momento.</p>
-              </div>
-            }
-          </form>
-        </div>
-      </div>
-    </section>);
-
-};
-
-
-/* ============== FOOTER ============== */
-const Footer = () =>
-<footer className="foot" data-screen-label="15 Footer">
-    <div className="wrap">
-      <div className="foot__grid">
-        <div className="foot__brand">
-          <img src="assets/logo-primary.png" alt="Nossa Aldeia" />
-          <p className="foot__tag">"Porque cura também acontece no vínculo."</p>
-        </div>
-        <div>
-          <h4>Navegação</h4>
-          <ul>
-            <li><a href="#solucao">Como funciona</a></li>
-            <li><a href="#grupos">Grupos</a></li>
-            <li><a href="#psicologas">Psicólogas</a></li>
-            <li><a href="#oferta">Investimento</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Suporte</h4>
-          <ul>
-            <li><a href="#faq">Perguntas frequentes</a></li>
-            <li><a href="#">Conversa inicial</a></li>
-            <li><a href="#">WhatsApp</a></li>
-            <li><a href="#">contato@nossaaldeia.com.br</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Política de privacidade</a></li>
-            <li><a href="#">Código de ética CRP</a></li>
-          </ul>
-        </div>
-      </div>
-      <div className="foot__bottom">
-        <span>© 2026 Nossa Aldeia · Psicoterapia em rede</span>
-        <span>Florianópolis · SC · Brasil</span>
-      </div>
-    </div>
-  </footer>;
 
 
 /* ================================================================
-   RODA DE CONVERSAS — CARD DE PRODUTO (inserido na página principal)
+   RODA DE CONVERSAS — LANDING PAGE COMPLETA (v2 — conversion-optimized)
    ================================================================ */
-const RodaCard = () =>
-<section className="roda-card-section" data-screen-label="Roda Conversas Card">
-  <div className="wrap">
-    <div className="roda-card__inner">
-      {/* Lado esquerdo: copy + CTA */}
-      <div>
-        <div className="roda-card__badge">
-          <span className="roda-card__badge-dot"></span>
-          Evento online · 07 de junho
-        </div>
-        <h2 className="roda-card__title">
-          Roda de Conversas<br />para <em>Mães Online</em>
-        </h2>
-        <p className="roda-card__sub">
-          Um encontro ao vivo guiado por psicólogas para trocar experiências, encontrar acolhimento e refletir sobre o que ninguém ensina antes de você se tornar mãe.
-        </p>
-        <div className="roda-card__meta">
-          <div className="roda-card__meta-item">
-            <Icon name="clock" size={15} /> Sábado, 07/06 · 19h30
-          </div>
-          <div className="roda-card__meta-item">
-            <Icon name="cloud" size={15} /> 100% Online
-          </div>
-          <div className="roda-card__meta-item">
-            <Icon name="users" size={15} /> Vagas limitadas
-          </div>
-        </div>
-        <a href="roda.html" className="btn--roda" style={{textDecoration:"none"}}>
-          Quero participar <Icon name="arrow" size={18} />
-        </a>
-        <p className="roda-card__trust">Evento conduzido pelas psicólogas da Nossa Aldeia · CRP registradas</p>
-      </div>
+const RodaLanding = () => {
+  const CHECKOUT_URL = 'https://evento.blinket.com.br/roda-de-conversa-entre-maes---maternidade-nao-tem-receita-77312'; // ← cole aqui o link do checkout quando tiver
 
-      {/* Lado direito: preview visual dos tópicos */}
-      <div className="roda-card__visual">
-        <p className="roda-card__visual-title">"Maternidade não tem receita"</p>
-        {[
-          { ico: 'heart', t: 'Culpa materna', d: 'Por que a gente se culpa por tudo?' },
-          { ico: 'users', t: 'A solidão que ninguém conta', d: 'Estar rodeada e se sentir sozinha.' },
-          { ico: 'spark', t: 'Identidade além da maternidade', d: 'Quem sou eu fora desse papel?' },
-          { ico: 'leaf', t: 'Limites e presença', d: 'Cuidar sem se perder no caminho.' },
-        ].map((f,i) =>
-          <div key={i} className="roda-card__feature">
-            <div className="roda-card__feature-ico"><Icon name={f.ico} size={16} /></div>
-            <div>
-              <strong>{f.t}</strong>
-              <span>{f.d}</span>
+  React.useEffect(() => { window.scrollTo(0,0); }, []);
+
+  /* ── dados ── */
+  const IDENT = [
+    { t:'A culpa que não sai.', d:'Você se cobra o tempo todo e isso pesa.' },
+    { t:'A solidão no meio da bagunça.', d:'Cercada de gente, mas se sentindo só.' },
+    { t:'Quem sou eu além disso?', d:'Sua identidade se apagou no meio da maternidade?' },
+    { t:'O cansaço que ninguém vê.', d:'Você está exausta, mas não pode dizer.' },
+    { t:'A saudade de si mesma.', d:'Lembra de quando tinha tempo pra você?' },
+    { t:'O manual que não veio.', d:'Parece que todo mundo sabe menos você.' },
+  ];
+
+  const VALOR_ESQ = [
+    { ico:'heart', t:'Você fala', d:'No seu ritmo. Sem pressão. Sem julgamento.' },
+    { ico:'users', t:'Você se reconhece', d:'Nas histórias das outras mães ao redor.' },
+    { ico:'spark', t:'Você sai diferente', d:'Com um olhar novo sobre o que pesava.' },
+  ];
+  const VALOR_DIR = [
+    { ico:'shield', t:'Sigilo absoluto', d:'O que é da roda, fica na roda.' },
+    { ico:'leaf', t:'Online, de casa', d:'Conforto e praticidade para esse momento só seu. Por você.' },
+    { ico:'clock', t:'2 horas só suas', d:'Duas horas de cuidado real.' },
+  ];
+
+  const COMO = [
+    { ico:'check', t:'Reserve sua vaga', d:'Reserve sua vaga abaixo' },
+    { ico:'clock', t:'Receba o link', d:'O acesso chega no seu e-mail com antecedência.' },
+    { ico:'users', t:'Entre na roda', d:'07/06 às 19h30. Você abre o link e aparece.' },
+    { ico:'heart', t:'Saia diferente', d:'Com algo que nenhum artigo do Google te dá.' },
+  ];
+
+  const CHECKS = [
+    'Você se cobra mesmo sem saber por qu.',
+    'Ama seus filhos e às vezes precisa de um intervalo disso.',
+    'Sorri para o mundo, mas carrega um peso que não nomeia.',
+    'Sente saudade de quem você era antes de ser mãe.',
+    'Quer falar mais abertamente, sem julgamento.',
+    'Parece que todo mundo tem um manual que você não recebeu',
+  ];
+
+  const renderCard = () => (
+    <>
+      <span className="rl-checkout__card-tag">Roda de Conversas · 07/06</span>
+      <h3 className="rl-checkout__card-title">Roda de Conversas para Mães</h3>
+      <div className="rl-checkout__price-row">
+        <span className="rl-checkout__price-cur">R$</span>
+        <span className="rl-checkout__price-val">57</span>
+        <span style={{fontSize:22,color:'var(--ink-soft)',fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',fontWeight:500}}>,90</span>
+      </div>
+      <p className="rl-checkout__price-note">Pagamento único · acesso confirmado por e-mail</p>
+      <div className="rl-checkout__div"></div>
+      {['Encontro ao vivo · 07/06 · 19h30','Condução por psicólogas clínicas','Grupo pequeno de mães','Link de acesso por e-mail'].map((f,i) =>
+        <div key={i} className="rl-checkout__feat">
+          <Icon name="check" size={15} /> {f}
+        </div>
+      )}
+      <div style={{marginTop:20}}>
+        <a href={CHECKOUT_URL} className="rl-checkout__submit" style={{textDecoration:'none'}}>
+          Garantir minha vaga · R$ 57,90 <Icon name="arrow" size={17} />
+        </a>
+      </div>
+      <div className="rl-checkout__secure"><Icon name="shield" size={13} /> Pagamento seguro · suas informações protegidas</div>
+      <div className="rl-checkout__guar"><Icon name="check" size={14} /> Vagas limitadas — link de acesso enviado após a inscrição.</div>
+    </>
+  );
+
+  return (
+    <div className="roda-lp">
+
+      {/* ══ HERO ══ */}
+      <section className="rl-hero" id="roda-topo">
+        <div className="rl-hero__wrap">
+
+          {/* esquerda */}
+          <div className="rl-hero__left">
+            <div className="rl-hero__tag">
+              <span className="rl-hero__tag-dot"></span>
+              Evento online · 07 de junho
+            </div>
+            <h1 className="rl-hero__h1">
+              Maternidade<br /><em>não tem receita.</em><br />Mas tem conversa.
+            </h1>
+            <p className="rl-hero__sub">
+              Uma roda ao vivo mediada por psicólogas, que também são mães, para mães que querem ser e se sentir ouvidas, trocar de verdade e descobrir que não estão sozinhas nesse caminho.
+            </p>
+            <div className="rl-hero__pills">
+              <div className="rl-hero__pill"><Icon name="clock" size={13} /> Sáb, 07/06 · 19h30</div>
+              <div className="rl-hero__pill"><Icon name="cloud" size={13} /> Online ao vivo</div>
+              <div className="rl-hero__pill"><Icon name="users" size={13} /> Vagas limitadas</div>
+            </div>
+            <a href="https://evento.blinket.com.br/roda-de-conversa-entre-maes---maternidade-nao-tem-receita-77312" className="rl-hero__cta">
+              Quero participar · R$ 57,90 <Icon name="arrow" size={19} />
+            </a>
+            <p className="rl-hero__cta-note">Confirmação imediata por e-mail</p>
+          </div>
+
+          {/* direita — floating price card */}
+          <div>
+            <div className="rl-hero__card">
+              <div className="rl-hero__card-badge">Vagas se encerrando</div>
+              <div className="rl-hero__card-event">Roda de Conversas · 07/06</div>
+              <h3 className="rl-hero__card-title">Roda de Conversas para Mães Online</h3>
+              <div className="rl-hero__price-row">
+                <span className="rl-hero__price-label">R$</span>
+                <span className="rl-hero__price-val">57</span>
+                <span style={{fontSize:24,color:'var(--ink-soft)',fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',fontWeight:500}}>,90</span>
+              </div>
+              <p className="rl-hero__price-note">Pagamento único · acesso ao vivo</p>
+              <div className="rl-hero__card-div"></div>
+              {['Encontro ao vivo · 07/06 · 19h30','Condução por psicólogas clínicas','Grupo pequeno · espaço seguro','Link de acesso por e-mail'].map((f,i)=>
+                <div key={i} className="rl-hero__card-feat"><Icon name="check" size={14} /> {f}</div>
+              )}
+              <a href="https://evento.blinket.com.br/roda-de-conversa-entre-maes---maternidade-nao-tem-receita-77312" className="rl-hero__card-cta">
+                Garantir minha vaga <Icon name="arrow" size={16} />
+              </a>
+              <div className="rl-hero__card-secure"><Icon name="shield" size={12} /> Pagamento seguro</div>
+              <div className="rl-hero__vagas">
+                <div className="rl-hero__vagas-label">
+                  <span>Vagas preenchidas</span><span>78%</span>
+                </div>
+                <div className="rl-hero__vagas-bar">
+                  <div className="rl-hero__vagas-fill" style={{width:'78%'}}></div>
+                </div>
+                <p className="rl-hero__vagas-urgent">⚡ Apenas 3 vagas restantes</p>
+              </div>
             </div>
           </div>
-        )}
+
+        </div>
+      </section>
+
+
+      {/* ══ IDENTIFICAÇÃO ══ */}
+      <section className="rl-ident">
+        <div className="rl-ident__inner">
+          <span className="rl-ident__eyebrow">Você se reconhece?</span>
+          <h2 className="rl-ident__h2">Tem algo aqui que você <em>já sentiu hoje.</em></h2>
+          <div className="rl-ident__grid">
+            {IDENT.map((item,i)=>
+              <div key={i} className="rl-ident__item">
+                <div className="rl-ident__item-dot"></div>
+                <p><strong>{item.t}</strong> {item.d}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══ QUEBRA OBJEÇÃO 1: "mas é só uma conversa?" ══ */}
+      <section className="rl-valor">
+        <div className="rl-valor__inner">
+          <span className="rl-valor__eyebrow">O que você leva</span>
+          <h2 className="rl-valor__h2">Não é "só uma conversa".</h2>
+          <p className="rl-valor__sub">É o espaço para você guiado por psicólogas que também são mães.</p>
+          <div className="rl-valor__cols">
+            <div>
+              <div className="rl-valor__col-title">O que acontece na roda</div>
+              {VALOR_ESQ.map((r,i)=>
+                <div key={i} className="rl-valor__row">
+                  <div className="rl-valor__ico"><Icon name={r.ico} size={15}/></div>
+                  <p><strong>{r.t}</strong>{r.d}</p>
+                </div>
+              )}
+            </div>
+            <div>
+              <div className="rl-valor__col-title">Formato pensado para você</div>
+              {VALOR_DIR.map((r,i)=>
+                <div key={i} className="rl-valor__row">
+                  <div className="rl-valor__ico"><Icon name={r.ico} size={15}/></div>
+                  <p><strong>{r.t}</strong>{r.d}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══ PSICÓLOGAS ══ */}
+      <section className="rl-psi">
+        <div className="rl-psi__inner">
+          <span className="rl-psi__eyebrow">Quem conduz</span>
+          <h2 className="rl-psi__h2">Psicólogas com +20 anos de clínica.</h2>
+          <div className="rl-psi__grid">
+            {[
+              { foto:'barbara.jpg', init:'B', nome:'Barbara Stürmer', crp:'Psicóloga clínica · CRP', tags:['UFSC','Terapia de grupo','+20 anos'], quote:'"A roda existe para dizer que você não precisa descobrir sozinha o que ninguém te ensinou sobre ser mãe."' },
+              { foto:'eliane.jpg',  init:'E', nome:'Eliane Cromack',   crp:'Psicóloga clínica · CRP', tags:['Unisul','Terapia de grupo','+20 anos'], quote:'"A transformação acontece no vínculo. A roda é um convite para você se reconhecer em outra mulher e encontrar força onde achava que não tinha."' },
+            ].map((p,i)=>
+              <div key={i} className="rl-psi__card">
+                <div className="rl-psi__avatar">
+                  {p.foto ? <img src={`assets/${p.foto}`} alt={p.nome} /> : <span className="rl-psi__av-init">{p.init}</span>}
+                </div>
+                <div>
+                  <span className="rl-psi__role">{p.crp}</span>
+                  <h3 className="rl-psi__name">{p.nome}</h3>
+                  <div className="rl-psi__tags">{p.tags.map((t,j)=><span key={j} className="rl-psi__tag">{t}</span>)}</div>
+                  <p className="rl-psi__quote">{p.quote}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══ COMO FUNCIONA ══ */}
+      <section className="rl-como">
+        <div className="rl-como__inner">
+          <span className="rl-como__eyebrow">Como funciona</span>
+          <h2 className="rl-como__h2">Simples. Você só precisa aparecer.</h2>
+          <div className="rl-como__steps">
+            {COMO.map((s,i)=>
+              <div key={i} className="rl-como__step">
+                <div className="rl-como__n">0{i+1}</div>
+                <div className="rl-como__ico"><Icon name={s.ico} size={19}/></div>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══ QUEBRA OBJEÇÃO 2: identificação emocional forte ══ */}
+      <section className="rl-emoc">
+        <div className="rl-emoc__inner">
+          <span className="rl-emoc__eyebrow">Antes de fechar essa página</span>
+          <h2 className="rl-emoc__h2">Se você está ainda aqui, <em>a roda é para você.</em></h2>
+          <div className="rl-emoc__checks">
+            {CHECKS.map((c,i)=>
+              <div key={i} className="rl-emoc__check">
+                <div className="rl-emoc__check-ico"><Icon name="check" size={12}/></div>
+                {c}
+              </div>
+            )}
+          </div>
+          <a href="https://evento.blinket.com.br/roda-de-conversa-entre-maes---maternidade-nao-tem-receita-77312" className="rl-emoc__cta">
+            Sim — quero participar <Icon name="arrow" size={17}/>
+          </a>
+        </div>
+      </section>
+
+
+      {/* ══ CHECKOUT ══ */}
+      <section id="roda-checkout" className="rl-checkout">
+        <div className="rl-checkout__inner">
+
+          {/* esquerda */}
+          <div>
+            <span className="rl-checkout__eyebrow">Inscrição</span>
+            <h2 className="rl-checkout__h2">Reserve sua vaga.</h2>
+            <div className="rl-checkout__details">
+              {[
+                { ico:'clock', l:'Data e horário', v:'Sábado, 07 de junho · 19h30' },
+                { ico:'cloud', l:'Formato', v:'Online ao vivo — link enviado por e-mail' },
+                { ico:'users', l:'Grupo pequeno', v:'Vagas intencionalmente limitadas' },
+                { ico:'shield', l:'Sigilo total', v:'Código de ética — o que é da roda, fica na roda' },
+              ].map((d,i)=>
+                <div key={i} className="rl-checkout__detail">
+                  <div className="rl-checkout__det-ico"><Icon name={d.ico} size={15}/></div>
+                  <div className="rl-checkout__det-text"><strong>{d.l}</strong><span>{d.v}</span></div>
+                </div>
+              )}
+            </div>
+            <div className="rl-checkout__inc">
+              <div className="rl-checkout__inc-title">Incluso na sua inscrição</div>
+              {['Encontro online ao vivo (~2h)','Condução por psicólogas clínicas','Espaço de escuta e troca entre mães','Reflexões guiadas sobre o tema da roda'].map((item,i)=>
+                <div key={i} className="rl-checkout__inc-item"><Icon name="check" size={14}/>{item}</div>
+              )}
+            </div>
+          </div>
+
+          {/* direita — card */}
+          <div className="rl-checkout__card">
+            {renderCard()}
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ══ CTA FINAL ══ */}
+      <section className="rl-final">
+        <div className="rl-final__inner">
+          <span style={{fontSize:12,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--dourado-light)',fontWeight:600}}>Uma última coisa</span>
+          <h2>Você merece um espaço <em>só seu.</em></h2>
+          <p>Por 2 horas, você faz algo por você, para você e para seus filhos. Estar com outras mães, em uma conversa conduzida por psicólogas, que também são mães: isso é cuidado.</p>
+          <a href="https://evento.blinket.com.br/roda-de-conversa-entre-maes---maternidade-nao-tem-receita-77312" className="rl-final__cta">
+            Garantir minha vaga · R$ 57,90 <Icon name="arrow" size={17}/>
+          </a>
+          <p className="rl-final__micro">07/06 · 19h30 · Online · Vagas limitadas</p>
+        </div>
+      </section>
+
+      {/* rodapé */}
+      <div style={{background:'var(--musgo-deep)',padding:'22px 28px',textAlign:'center',fontSize:13,color:'rgba(251,249,244,.45)'}}>
+        © 2026 Nossa Aldeia · Psicoterapia em rede · Florianópolis · SC
       </div>
     </div>
-  </div>
-</section>;
-
-
-
-
-/* ============== TWEAKS ============== */
-const Tweaks = ({ t, setTweak }) => {
-  const { TweaksPanel, TweakSection, TweakRadio, TweakToggle, TweakText } = window.TweaksPanel || {};
-  if (!TweaksPanel) return null;
-  return (
-    <TweaksPanel title="Tweaks">
-      <TweakSection title="Headline (A/B)">
-        <TweakRadio
-          label="Variante"
-          value={t.headlineVariant}
-          onChange={(v) => setTweak('headlineVariant', v)}
-          options={[
-          { label: 'V1', value: 'v1' },
-          { label: 'V2', value: 'v2' },
-          { label: 'V3', value: 'v3' }]
-          } />
-        
-        <p style={{ fontSize: 12, color: '#777', marginTop: 6, lineHeight: 1.4 }}>
-          {HEADLINES[t.headlineVariant].sub.slice(0, 80)}…
-        </p>
-      </TweakSection>
-      <TweakSection title="CTA">
-        <TweakText label="Label do botão" value={t.ctaLabel} onChange={(v) => setTweak('ctaLabel', v)} />
-        <TweakToggle label="Sticky CTA flutuante" value={t.showStickyCTA} onChange={(v) => setTweak('showStickyCTA', v)} />
-      </TweakSection>
-    </TweaksPanel>);
-
+  );
 };
+
 
 /* ============== APP ============== */
-const App = () => {
-  const useTweaks = window.TweaksPanel && window.TweaksPanel.useTweaks || ((d) => [d, () => {}]);
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-  return (
-    <>
-      <Nav ctaLabel={t.ctaLabel} />
-      <Hero headlineVariant={t.headlineVariant} ctaLabel={t.ctaLabel} />
-      <ValueProp />
-      <Pain />
-      <Solution />
-      <Quiz />
-      <Benefits />
-      <Authority />
-      <Testimonials />
-      <PSQuote />
-      {/* ── Roda de Conversas para Mães — card de produto ── */}
-      <RodaCard />
-      <Ebooks />
-      <Offer />
-      <Objections />
-      <Groups />
-      <FAQ />
-      <FinalCTA ctaLabel={t.ctaLabel} />
-      <NewsSignup />
-      <Footer />
-
-      {t.showStickyCTA &&
-      <a href="#quiz" className="sticky-cta">
-          Descobrir Minha Aldeia <Icon name="arrow" size={16} />
-        </a>
-      }
-
-      <Tweaks t={t} setTweak={setTweak} />
-    </>);
-
-};
+const App = () => <RodaLanding />;
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
